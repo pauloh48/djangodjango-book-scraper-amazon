@@ -25,7 +25,11 @@ SECRET_KEY = 'django-insecure-$pq8oz@u5=!t31uozw1=uy#a($lg6p16x(ky#ivf$!5kj#olvw
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    'djangodjango-book-scraper-amazon.onrender.com'
+]
 
 
 # Application definition
