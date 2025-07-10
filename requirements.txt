@@ -1,0 +1,5 @@
+Django==5.2
+Pillow==9.5.0
+Pillow==11.3.0
+Requests==2.32.4
+selenium==4.34.2
