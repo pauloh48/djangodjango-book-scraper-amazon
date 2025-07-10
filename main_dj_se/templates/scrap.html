@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Scraping</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1 style="text-align: center;">Automação Scraping</h1>
+
+    <div class="form-container">
+        <form action="{% url 'scrap' %}" method="post">
+            {% csrf_token %}
+            <label for="url">URL (Amazon) do livro:</label>
+            <input type="text" name="url" id="url" placeholder="Cole aqui o link do livro" required>
+            <button type="submit">Executar</button>
+        </form>
+    </div>
+
+    {% if title_book %}
+        <div class="resultado">
+            {% if cover %}
+                <div>
+                    <img src="{{ cover }}" alt="{{ title_book }}">
+                    <div class="download-button">
+                        <a href="{{ cover }}" download="cover_book.jpg">
+                            <button type="button">Baixar Capa</button>
+                        </a>
+                    </div>
+                </div>
+            {% endif %}
+            <div class="info">
+                <h2>{{ title_book }}</h2>
+                <p><strong>Descrição:</strong> {{ description_book }}</p>
+                <p><strong>Preço Digital:</strong> {{ price_digital }}</p>
+                <p><strong>Preço Áudio:</strong> {{ price_audio }}</p>
+                <p><strong>Preço Físico:</strong> {{ price_fisical }}</p>
+                <p><strong>Avaliações:</strong> {{ reviwe }}</p>
+            </div>
+        </div>
+    {% elif erro %}
+        <p class="erro"><strong>{{ erro }}</strong></p>
+    {% endif %}
+</body>
+</html>
